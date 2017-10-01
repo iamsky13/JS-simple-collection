@@ -9,6 +9,27 @@
 <body>
 	<div class="container">
 		<h1>Issue tracker</h1>
+		<div class="jumbotron">
+			<form id="issueInputForm">
+				<div class="form-group">
+					<label for="issueDescInput">Description</label>
+					<input type="text" class="form-control" id="issueDescInput" placeholder="Description">
+				</div>
+				<div class="form-group">
+					<label for="issuePriority">Priority</label>
+					<select id="issuePriority" class="form-control">
+						<option value="low">Low</option>
+						<option value="medium">Medium</option>
+						<option value="high">High</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="issueAssignedTo">Assigned To</label>
+					<input type="text" class="form-control" id="issueAssignedTo" placeholder="Issue Assigned To">
+				</div>
+				<button type="submit" class="btn btn-primary">Add</button>
+			</form>
+		</div>
 	</div>
 	<script src="main.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

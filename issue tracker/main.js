@@ -35,6 +35,34 @@ function saveIssue(e){
 	e.preventDefault();
 }
 
+function setStatusClosed(id) {
+  var issues = JSON.parse(localStorage.getItem('issues'));
+  console.log(id);
+  for (var i = 0; i < issues.length; i++) {
+    if (issues[i].id == id) {
+      issues[i].status = 'Closed';
+      
+    }
+  }
+
+  localStorage.setItem('issues', JSON.stringify(issues));
+
+  fetchIssues();
+}
+
+function deleteIssue(id) {
+  var issues = JSON.parse(localStorage.getItem('issues'));
+
+  for (var i = 0; i < issues.length; i++) {
+    if (issues[i].id == id) {
+      issues.splice(i, 1);
+    }
+  }
+
+  localStorage.setItem('issues', JSON.stringify(issues));
+
+  fetchIssues();
+}
 
 
 
@@ -49,7 +77,7 @@ function fetchIssues(){
 		var priority = issues[i].priority;
 		var assignedTo = issues[i].assignedTo;
 		var status = issues[i].status;
-
+		console.log(issues[i].status);
 
 		issuesList.innerHTML += '<div class="jumbotron">'+
 								'<h6>Issue ID: '+id+'</h6>'+
@@ -57,7 +85,7 @@ function fetchIssues(){
 								'<h3>'+desc+'</h3>'+
 								'<p><span class="glyphicon glyphicon-exclamation-sign">'+priority+'</span></p>'+
 								'<p><span class="glyphicon glyphicon-user">'+assignedTo+'</span></p>'+
-								'<a href="#" class="btn btn-warning onclick="setStatusClose(\''+id+'\')">close</a>'+
+								'<a href="#" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">close</a>'+
 								'<a href="#" class="btn btn-danger" onclick="deleteIssue(\''+id+'\')">Delete</a>'+
 								'</div>';
 
